@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario Orologi</title>
+  <style>
+    /* Stili come nell'esempio precedente */
+    /* ... */
+  </style>
+</head>
+<body>
+  <h1>Inventario Orologi</h1>
+  
+  <table id="inventoryTable">
+    <thead>
+      <tr>
+        <th>ID Orologio</th>
+        <th>Nome Orologio</th>
+        <th>Descrizione</th>
+        <th>Data Acquisto</th>
+        <th>Importo Acquisto (€)</th>
+        <th>Spese Extra (€)</th>
+        <th>Data Vendita</th>
+        <th>Importo Vendita (€)</th>
+        <th>Guadagno (€)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Le righe degli orologi verranno generate qui -->
+    </tbody>
+  </table>
+
+  <script>
+    // Dati degli orologi (puoi sostituire con i tuoi dati)
+    const watchesData = [
+      { id: 1, name: 'Orologio A', description: '...', purchaseDate: '2023-10-09', purchaseAmount: 200, extraExpenses: 10, saleDate: '2023-10-20', saleAmount: 300 },
+      // Aggiungi altri orologi in un formato simile
+    ];
+
+    const tbody = document.querySelector('tbody');
+    
+    // Aggiungi ogni orologio come riga nella tabella
+    watchesData.forEach(watch => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${watch.id}</td>
+        <td>${watch.name}</td>
+        <td>${watch.description}</td>
+        <td>${watch.purchaseDate}</td>
+        <td>${watch.purchaseAmount}</td>
+        <td>${watch.extraExpenses}</td>
+        <td>${watch.saleDate}</td>
+        <td>${watch.saleAmount}</td>
+        <td>${watch.saleAmount - watch.purchaseAmount}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
