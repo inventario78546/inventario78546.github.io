@@ -32,30 +32,36 @@
   </table>
 
   <script>
-    // Dati degli orologi (puoi sostituire con i tuoi dati)
-    const watchesData = [
-      { id: 1, name: 'Orologio A', description: '...', purchaseDate: '2023-10-09', purchaseAmount: 200, extraExpenses: 10, saleDate: '2023-10-20', saleAmount: 300 },
-      // Aggiungi altri orologi in un formato simile
-    ];
+    // Funzione per generare un numero casuale compreso tra min e max
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
+    // Funzione per generare una data casuale nel formato 'yyyy-mm-dd'
+    function getRandomDate() {
+      const year = getRandomNumber(2000, 2023);
+      const month = getRandomNumber(1, 12).toString().padStart(2, '0');
+      const day = getRandomNumber(1, 28).toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // Genera 100 righe di dati casuali per gli orologi
     const tbody = document.querySelector('tbody');
-    
-    // Aggiungi ogni orologio come riga nella tabella
-    watchesData.forEach(watch => {
+    for (let i = 1; i <= 100; i++) {
       const row = document.createElement('tr');
       row.innerHTML = `
-        <td>${watch.id}</td>
-        <td>${watch.name}</td>
-        <td>${watch.description}</td>
-        <td>${watch.purchaseDate}</td>
-        <td>${watch.purchaseAmount}</td>
-        <td>${watch.extraExpenses}</td>
-        <td>${watch.saleDate}</td>
-        <td>${watch.saleAmount}</td>
-        <td>${watch.saleAmount - watch.purchaseAmount}</td>
+        <td>${i}</td>
+        <td>Orologio ${i}</td>
+        <td>Descrizione dell'orologio ${i}</td>
+        <td>${getRandomDate()}</td>
+        <td>${getRandomNumber(100, 1000)}</td>
+        <td>${getRandomNumber(0, 50)}</td>
+        <td>${getRandomDate()}</td>
+        <td>${getRandomNumber(200, 1200)}</td>
+        <td>${getRandomNumber(50, 500)}</td>
       `;
       tbody.appendChild(row);
-    });
+    }
   </script>
 </body>
 </html>
