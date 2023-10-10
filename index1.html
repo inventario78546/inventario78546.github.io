@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario Orologi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0066cc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    th, td {
+      transition: background-color 0.3s;
+    }
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0050aa;
+    }
+    #sommaContainer {
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+    }
+    #sommaValue strong {
+      color: #0066cc;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Inventario Orologi</h1>
+  
+  <table id="inventoryTable">
+    <!-- Contenuto della tabella come mostrato in esempi precedenti -->
+  </table>
+
+  <!-- Aggiungi un pulsante per visualizzare la somma dei guadagni -->
+  <button onclick="mostraSommaGuadagni()">Visualizza Somma Guadagni</button>
+
+  <div id="sommaContainer">
+    <h2>Somma Guadagni</h2>
+    <p id="sommaValue">La somma totale dei guadagni è: <strong></strong> €</p>
+  </div>
+
+  <script>
+    // Funzione per visualizzare la somma dei guadagni
+    function mostraSommaGuadagni() {
+      const guadagniArray = Array.from(document.querySelectorAll('tbody tr')).map(row => parseFloat(row.lastElementChild.innerText));
+      const sommaGuadagni = guadagniArray.reduce((acc, guadagno) => acc + guadagno, 0);
+      const sommaContainer = document.getElementById('sommaContainer');
+      const sommaValue = document.querySelector('#sommaValue strong');
+      sommaValue.textContent = sommaGuadagni + ' €';
+      sommaContainer.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
